@@ -30,7 +30,7 @@ input,select{width:100%;background:var(--c2);border:1px solid var(--bd);border-r
 .opt{display:flex;gap:10px;text-align:left;font:inherit;color:var(--tx);background:var(--c1);border:1px solid var(--bd);border-radius:14px;padding:13px;cursor:pointer}.opt:hover{border-color:var(--c)}.opt.sel{border-color:var(--c);background:color-mix(in srgb,var(--c) 18%,var(--c1))}.opt b{color:var(--c)}
 .big{font-size:64px;font-weight:800;background:linear-gradient(135deg,var(--c,#6366f1),var(--ac2));-webkit-background-clip:text;color:transparent}
 .rv.ok{border-color:#22c55e66}.rv.no{border-color:#ef444466}.only .rv.ok{display:none}
-.bar{height:6px;background:var(--c2);border-radius:9px;margin:10px 0 18px}.bar u{display:block;height:100%;border-radius:9px;background:var(--c)}
+const CFG={key:'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',base:'https://openrouter.ai/api/v1',model:'openrouter/free'};
 .flip{perspective:1000px;height:260px;cursor:pointer}.fi{position:relative;height:100%;transition:transform .5s;transform-style:preserve-3d}.flip.on .fi{transform:rotateY(180deg)}
 .ff{position:absolute;inset:0;margin:0;display:grid;place-content:center;text-align:center;backface-visibility:hidden;font-size:20px;font-weight:700}.ff small{color:var(--mu);font-size:11px;text-transform:uppercase;letter-spacing:.1em}.fb{transform:rotateY(180deg);background:linear-gradient(135deg,color-mix(in srgb,var(--c) 55%,#000),var(--c1))}
 .note table{border-collapse:collapse;width:100%;margin:10px 0}.note th,.note td{border:1px solid var(--bd);padding:7px 10px;text-align:left}.note li{margin:4px 0}.note h2,.note h3{color:var(--c)}
@@ -168,7 +168,6 @@ function card(){const d=S.deck;
  <p class="mu center">Нажмите на карточку (или пробел), чтобы перевернуть</p><div class="row"><button class="btn g2" onclick="rate(0)">↻ Повторить</button><button class="btn" onclick="rate(1)">✓ Знаю</button></div>`;kx()}
 function rate(k){const d=S.deck,i=d.q.shift();if(k)d.kn++;else d.q.push(i);card()}
 document.addEventListener('keydown',e=>{if(!S.deck||!$('.flip'))return;if(e.code=='Space'){e.preventDefault();$('.flip').classList.toggle('on')}if(e.key=='ArrowRight')rate(1);if(e.key=='ArrowLeft')rate(0)});
-const CFG={key:'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',base:'https://openrouter.ai/api/v1',model:'openrouter/free'};
  /* ---------- settings ---------- */
 function openSet(){$('#k').value=CFG.key;$('#u').value=CFG.base;$('#m').value=CFG.model;$('#ts').textContent='';$('#set').showModal()}
 function sv(close){CFG.key=$('#k').value.trim();CFG.base=$('#u').value.trim()||CFG.base;CFG.model=$('#m').value.trim()||CFG.model;if(close){$('#set').close();S.sub?nav():home()}}
