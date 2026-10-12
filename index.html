@@ -168,7 +168,8 @@ function card(){const d=S.deck;
  <p class="mu center">Нажмите на карточку (или пробел), чтобы перевернуть</p><div class="row"><button class="btn g2" onclick="rate(0)">↻ Повторить</button><button class="btn" onclick="rate(1)">✓ Знаю</button></div>`;kx()}
 function rate(k){const d=S.deck,i=d.q.shift();if(k)d.kn++;else d.q.push(i);card()}
 document.addEventListener('keydown',e=>{if(!S.deck||!$('.flip'))return;if(e.code=='Space'){e.preventDefault();$('.flip').classList.toggle('on')}if(e.key=='ArrowRight')rate(1);if(e.key=='ArrowLeft')rate(0)});
-/* ---------- settings ---------- */
+const CFG={key:'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',base:'https://openrouter.ai/api/v1',model:'openrouter/free'};
+ /* ---------- settings ---------- */
 function openSet(){$('#k').value=CFG.key;$('#u').value=CFG.base;$('#m').value=CFG.model;$('#ts').textContent='';$('#set').showModal()}
 function sv(close){CFG.key=$('#k').value.trim();CFG.base=$('#u').value.trim()||CFG.base;CFG.model=$('#m').value.trim()||CFG.model;if(close){$('#set').close();S.sub?nav():home()}}
 async function tst(){sv();$('#ts').textContent='Проверяю…';try{await ai([{role:'user',content:'Reply with OK'}],0,20);$('#ts').textContent='✅ Подключение работает'}catch(e){$('#ts').textContent='⚠ '+e.message}}
